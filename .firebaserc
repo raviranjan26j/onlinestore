@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ravi-onlinestore": {
+      "hosting": {
+        "onlinestore": [
+          "ravi-onlinestore"
+        ]
+      }
+    }
+  }
+}
