@@ -31,6 +31,8 @@ import { SignupComponent } from './signup/signup.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { WindowRefService } from './window-ref.service';
 import { AuthGuardService } from './auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -50,9 +52,11 @@ import { AuthGuardService } from './auth.service';
     ProductComponent,
     UserComponent,
     SignupComponent,
-    PaymentsComponent
+    PaymentsComponent,
+    ForgotPasswordComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

@@ -1,4 +1,4 @@
-<header pageTitle="Login" pageIcon="info" help="Login" photourl="{{userData.photoURL}}"></header> 
+<header pageTitle="{{title}}" pageIcon="info" help="Login" photourl="{{userData.photoURL}}"></header> 
 <br>
 <div class="center">
 <div>
@@ -9,8 +9,7 @@
 <mat-card>
     <div *ngIf="userloggedin else showShopping">
       <button type="button" routerLink="/payment" mat-raised-button color="primary">Checkout the website</button>
-      <br><br>
-      <button type="button" (click)="logout()"  mat-raised-button color="primary">Logout</button>
+  
     </div>
     <ng-template #showShopping> 
       <mat-card-content> 
@@ -41,10 +40,12 @@
             <mat-error *ngIf="password.errors['minlength']">Password can't be less than 5 characters.</mat-error>
             <mat-error *ngIf="password.errors['maxlength']">Password can't be more than 30 characters.</mat-error>
           </span>
-          <br>
           <div class="center">
           <mat-card-actions align="start" class="center">
             <button type="submit" [disabled]="!formData.valid" mat-raised-button color="primary">Log in</button>
+            <br><button mat-button routerLink="/forgot-password">
+              Forgot password?
+            </button>
             <!--<button type="button" routerLink="/shopping" mat-raised-button color="primary">Browse as Guest</button>-->
           </mat-card-actions>
           </div>
@@ -53,9 +54,9 @@
       <div class="center">
       <mat-card-content>
         <mat-chip-list class="mat-chip-list-stacked">
-          <mat-chip color="primary" selected="true" (click)="login('FB')">
+        <!--  <mat-chip color="primary" selected="true" (click)="login('FB')">
             &ensp; Login With Facebook
-          </mat-chip>
+          </mat-chip>-->
           <mat-chip color="warn" selected="true" (click)="login('GOOGLE')">
              Login With Google
           </mat-chip>

@@ -1,1 +1,32 @@
-<p>carts works!</p>
+<div class="container center">
+    <div class="row">
+        <div class="col-md-12">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Countries </th>
+        <th scope="col"> Total Confirmed Cases </th>
+        <th scope="col"> New Confirmed Cases </th>
+        <th scope="col"> New Deaths </th>
+        <th scope="col"> Total Deaths </th>
+        <th scope="col"> New Recovered </th>
+        <th scope="col"> Total Recovered </th>
+      </tr>
+    </thead>
+    <ng-container>
+       <tbody>
+         <tr *ngFor="let list of post.Countries  let i = index ">
+           <td> {{list.Country}} </td>
+           <td> {{list.TotalConfirmed}} </td>
+           <td> {{list.NewConfirmed}} </td>
+           <td> {{list.NewDeaths}} </td>
+           <td> {{list.TotalDeaths}} </td>
+           <td> {{list.NewRecovered}} </td>
+           <td> {{list.TotalRecovered}} </td>
+         </tr>
+       </tbody>
+     </ng-container>
+   </table>
+  </div>
+  </div>
+  </div>

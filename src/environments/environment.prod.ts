@@ -14,6 +14,6 @@ export const environment = {
     fb:"https://www.facebook.com/ravi.welcomes.you",
     linkdin: "https://www.linkedin.com/in/ravi-ranjan-4a230b12a/",
     git: "https://github.com/raviranjan26j",
-    instagram: "https://google.com"
+    instagram: "https://www.instagram.com/_raviranjan/"
   }
 };

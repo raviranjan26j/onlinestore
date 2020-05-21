@@ -14,17 +14,19 @@ import { AdmincartsComponent } from './Admin/admincarts/admincarts.component';
 import { SignupComponent } from './signup/signup.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { AuthGuardService } from './auth.service';
+import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 
 
 const routes : Routes= [
   {path:'', redirectTo:'/login',pathMatch:'full'},
   {path:'aboutus', component:AboutusComponent, canActivate: [AuthGuardService]},
   {path:'admin', component:AdmintabComponent, canActivate: [AuthGuardService]},
-  {path:'settings', component:SettingsComponent, canActivate: [AuthGuardService]},
+  {path:'services', component:SettingsComponent, canActivate: [AuthGuardService]},
   {path:'product', component:ProductComponent, canActivate: [AuthGuardService]},
   {path:'login', component:LoginComponent},
   {path:'cart', component:AdmincartsComponent, canActivate: [AuthGuardService]},
   {path:'signup', component:SignupComponent},
+  {path:'forgot-password', component:ForgotPasswordComponent},
   {path:'payment', component:PaymentsComponent, canActivate: [AuthGuardService]},
   {path:'**', redirectTo:'/login',pathMatch:'full'} 
 ]

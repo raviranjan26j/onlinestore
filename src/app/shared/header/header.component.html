@@ -1,22 +1,14 @@
 <mat-toolbar>
     <button mat-fab color="warn" mat-button [matMenuTriggerFor]="socialNavigation">
-        <mat-icon>local_mall</mat-icon>
+        <mat-icon>bar_chart</mat-icon>
     </button>
     <span class="example-icon"></span>
     <mat-icon>{{pageIcon}}</mat-icon>
     {{pageTitle}}
     <span class="example-spacer"></span>
-    <mat-icon [color]="userstatuscolor" routerLink="/product">shop</mat-icon>
+    <mat-icon [color]="userstatuscolor"><img src="{{photourl}}" style="height: 30px;" [matMenuTriggerFor]="profile"></mat-icon>
     <span class="example-icon"></span>
-    <mat-icon [color]="userstatuscolor" routerLink="/settings"><img src="{{photourl}}" style="height: 25px;"></mat-icon>
     <span class="example-icon"></span>
-    <mat-icon matBadge="{{counter}}" matBadgePosition="before" matBadgeColor="accent">shopping_cart</mat-icon>
-    <span class="example-icon"></span>
-    <mat-icon mat-button [matMenuTriggerFor]="menu">help</mat-icon>
-    <span class="example-icon"></span>
-    <button routerLink="/admin">
-    <mat-icon>settings</mat-icon> </button>
-    
     <mat-menu #socialNavigation="matMenu">
      <a href="{{configData.fb}}" target="_blank"> <button mat-menu-item>Facebook</button></a>  
      <a href="{{configData.linkdin}}" target="_blank">  <button mat-menu-item>Linkdin</button></a>
@@ -24,7 +16,9 @@
      <a href="{{configData.instagram}}" target="_blank">  <button mat-menu-item>Instagram</button></a>
       </mat-menu>
 
-    <mat-menu #menu="matMenu">
-        {{help}}
-      </mat-menu>
+      <mat-menu #profile="matMenu">
+         <button mat-menu-item (click)="gotoServices()">Services</button>
+         <button mat-menu-item (click)="logout()">Logout</button>
+       </mat-menu>
+
 </mat-toolbar>

@@ -19,7 +19,7 @@ import { User } from 'src/app/shared/services/user';
 })
 export class LoginComponent implements OnInit {
   userData: User={displayName:"",uid:"",email:"",
-    emailVerified:false,photoURL:""};;
+    emailVerified:false,photoURL:""};
   res:boolean;
   userloggedin:boolean;
   error:boolean;
@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   errorMessage:string;
   handleError: any;
   username:string="";
+  title:string="Login"
   constructor(public afAuth: AngularFireAuth, private _backendService:BackendService,public afs: AngularFirestore) { 
     this.afAuth.authState.subscribe(user => {
       if (user) {
@@ -57,6 +58,8 @@ export class LoginComponent implements OnInit {
      console.log(">>>>>>>>>>>>>>>>>>>test "+localStorage.getItem('user'))
     
     } */
+    
+   // window.location.reload();
   }
 
   login(loginType,formData?){
@@ -112,6 +115,7 @@ export class LoginComponent implements OnInit {
             this.logout();
           }
           else{
+          this.title="Welcome"
           localStorage.setItem("isAuthenticUser","1");
           return this.userloggedin=true;
           }
@@ -120,7 +124,6 @@ export class LoginComponent implements OnInit {
        if (this.afAuth.authState) {
         this.afAuth.currentUser.then((res)=>{
           //console.log("KKKKK"+res.displayName);
-          
           this.userData={displayName:res.displayName,uid:res.uid,email:res.email,
             emailVerified:res.emailVerified,photoURL:res.photoURL};
             this.username=this.userData.displayName;
@@ -129,6 +132,7 @@ export class LoginComponent implements OnInit {
               this.logout();
             }
             else{
+              this.title="Welcome"
             localStorage.setItem("isAuthenticUser","1");
             this.userloggedin=true;
           }

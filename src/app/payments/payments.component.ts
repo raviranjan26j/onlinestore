@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { WindowRefService } from '../window-ref.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { User } from '../shared/services/user';
+import { BackendService } from '../backend services/backend.service';
  // import { from } from 'rxjs'; 
 
 @Component({
@@ -18,8 +21,10 @@ export class PaymentsComponent implements OnInit {
     userDetails:any;
     isPaymentDone:boolean=false;
     pkgName:string;
+    userData: User={displayName:"",uid:"",email:"",
+    emailVerified:false,photoURL:""};
 
-  constructor( private winRef:WindowRefService ,private _formBuilder: FormBuilder) { 
+  constructor( private _backendService:BackendService,private winRef:WindowRefService ,private _formBuilder: FormBuilder,public afAuth: AngularFireAuth,) { 
     this.form = _formBuilder.group({
         package: ['', Validators.required]
     });
@@ -35,9 +40,7 @@ export class PaymentsComponent implements OnInit {
     else{
         this.isPaymentDone=false;
     }
-    console.log(localStorage.getItem('user')+" ?????????")
-    console.log(">>>>>>"+this.userDetails.displayName)
-  }
+}
 
 
  paymentProcess() {
@@ -45,12 +48,12 @@ export class PaymentsComponent implements OnInit {
         "key": "rzp_test_62SvhsTaILqixM", 
         "amount": this.amount*100, 
         "currency": "INR",
-        "name": "Ravi Onlinestore",
+        "name": "Ravi Online Services",
         "description": this.package+" Membership purchase",
         "image": "assets/images/Onlinestore.png",
         "handler": (response)=>{
             this.savetoDB(response);
-            alert(response.razorpay_payment_id);
+            alert("Your Payment Id: "+response.razorpay_payment_id);
             location.reload();
         
         
