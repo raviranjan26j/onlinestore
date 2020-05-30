@@ -41,7 +41,7 @@ export class BackendService {
        console.log("inside google auth")
       }
       console.log("completed!!!")
-     return this.afAuth.signInWithRedirect(loginMethod);
+     return this.afAuth.signInWithPopup(loginMethod);
    }
 
   }
